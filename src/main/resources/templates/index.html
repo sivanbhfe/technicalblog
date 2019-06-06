@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Techincal blog - All Posts</title>
+<head th:replace="layout::site-head">
 </head>
+<header th:replace="layout::logged-out"></header>
 <body>
 <h1>All technical posts</h1>
 <main id="posts">
 <post th:each="p:${posts}">
     <h2 th:text="${p.title}"></h2>
-    <i>Posted On:</i>
-    <span th:text="${p.date}"></span>
-    <div>
-        <p th:text="${p.body}"></p>
-    </div>
+    Posted on: <span th:text="${p.date}"></span>
+    <p th:text="${p.body}"></p>
 </post>
+    <!--
+
+    <post th:with="p=${posts}">
+        <h2 th:text="${p.title}"></h2>
+        Posted on: <span th:text="${p.date}"></span>
+        <p th:text="${p.body}"></p>
+    </post>
+    -->
 </main>
 </body>
 </html>
